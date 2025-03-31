@@ -63,6 +63,8 @@ class CoDoFuzz(BaseAgent):
         sorted_indices = torch.argsort(scores_tensor, descending=True)
 
         selected = []
+        taken = np.zeros(len(x_unlabeled), dtype=bool)
+        
         for x in range(self.k):
             curr_score  = 1 / (x + 1e-6)
 
@@ -72,7 +74,9 @@ class CoDoFuzz(BaseAgent):
             for idx in sorted_indices:
                 if len(selected) >= self.query_size:
                     break
-                
+                if taken[idx]:
+                    continue
+
                 pc = pred_classes_cpu[idx]
                 prob = max_probs_cpu[idx]
                 row, col = self._get_cell(pc, prob)
@@ -88,6 +92,7 @@ class CoDoFuzz(BaseAgent):
                     # Update the temporary coverage matrix
                     temp_coverage[row, col] += 1
                     selected.append(idx.item())
+                    taken[idx] = True
 
         # Update the main coverage matrix and return selected
         self.coverage_matrix = temp_coverage
