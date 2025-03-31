@@ -128,6 +128,7 @@ _agent_colors = {
     "TypiClust_Raw": "hotpink",
     "Coreset_Raw": "magenta",
     "Galaxy": "darkslategray",
+    "CoDoFuzz": "darkorange",
 }
 _agent_names = { # only corrected names
     "Coreset_Greedy": "Coreset",
@@ -439,6 +440,8 @@ def get_agent_by_name(name:str)->Callable:
         return agents.LSA
     elif name == "galaxy":
         return agents.Galaxy
+    elif name == 'codofuzz':
+        return agents.CoDoFuzz
     else:
         raise ValueError(f"Agent name '{name}' not recognized")
 

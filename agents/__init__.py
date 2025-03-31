@@ -9,4 +9,5 @@ from agents.typiclust import TypiClust, TypiClust_Raw
 from agents.core_gcn import CoreGCN
 from agents.surprise_adequacy import DSA, LSA
 from agents.galaxy import Galaxy
+from agents.codofuzz import CoDoFuzz
 
