@@ -1,6 +1,4 @@
 # A Cross Domain-Benchmark for Active Learning
-This repository holds the source code for the NeurIPS 24 submission with the same name. \
-This work is available under the [CC BY License](https://creativecommons.org/licenses/by/4.0/)
 
 ## Dependencies
 Python >= 3.10 
